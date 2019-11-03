@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.whoareyou">
+<!--    在Android 4.4系统之前，访问SD卡的应用关联目录也是要声明权限的，从4.4系统开始不再需要声明权限。
+        为了兼容老版本系统，此处声明访问SD卡的权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- android:authorities:
+            值必须和MainActivity中使用的FileProvider.getUriForFile()方法中的第二个参数一致-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.whoareyou.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <!--指定Uri共享路径，并引用一个@xml/file_paths资源（需要在res目录下创建xml/file_paths）-->
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+
+        </provider>
+
+    </application>
+
+</manifest>
