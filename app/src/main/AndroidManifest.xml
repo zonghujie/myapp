@@ -3,6 +3,7 @@
     package="com.example.whoareyou">
 <!--    在Android 4.4系统之前，访问SD卡的应用关联目录也是要声明权限的，从4.4系统开始不再需要声明权限。
         为了兼容老版本系统，此处声明访问SD卡的权限-->
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application

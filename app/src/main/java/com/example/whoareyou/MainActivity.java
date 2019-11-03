@@ -130,26 +130,36 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+//            case 1:
+//                if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+//                    //得到了用户的允许
+//                }
+//                else{
+//                    //用户拒绝
+//                }
+            case 2:
+                if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    //得到了用户的允许
+                    openAlbum();
+                }else {
+                    //用户拒绝
+                    Toast.makeText(this, "用户拒绝授权", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     // 1.2 打开相册选择照片
     private void openAlbum() {
         Intent intent = new Intent("android.intent.action.GET_CONTENT");
         intent.setType("image/*");
         startActivityForResult(intent, 2);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
-            case 1:
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    openAlbum();
-                }else {
-                    Toast.makeText(this, "用户拒绝授权", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            default:
-        }
     }
 
     // 2 显示照片
