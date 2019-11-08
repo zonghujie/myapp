@@ -25,4 +25,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"></ImageView>
 
+<!--   <ScrollView-->
+<!--       android:layout_width="match_parent"-->
+<!--       android:layout_height="match_parent">-->
+
+<!--       &lt;!&ndash;       okhttp使用测试，GET请求，将服务器返回的数据显示出来&ndash;&gt;-->
+<!--       <TextView-->
+<!--           android:id="@+id/response_text"-->
+<!--           android:layout_width="match_parent"-->
+<!--           android:layout_height="wrap_content"></TextView>-->
+<!--   </ScrollView>-->
+
 </LinearLayout>
